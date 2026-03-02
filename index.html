@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuadradizador</title>
+<style>
+body{
+  font-family: sans-serif;
+  background:#111;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:50px;
+}
+textarea{
+  width:80%;
+  max-width:500px;
+  height:100px;
+  margin-bottom:20px;
+  padding:10px;
+  font-size:16px;
+}
+.output{
+  white-space:pre-wrap;
+  font-size:20px;
+  letter-spacing:2px;
+}
+</style>
+</head>
+<body>
+
+<h2>Transformador a ■</h2>
+
+<textarea id="input" placeholder="Escribe aquí..."></textarea>
+<div class="output" id="output"></div>
+
+<script>
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+
+input.addEventListener("input", () => {
+  const text = input.value;
+  
+  const transformed = text.split("").map(char => {
+    // Si es letra sin tilde (A-Z o a-z)
+    if (/^[A-Za-z]$/.test(char)) {
+      return "■";
+    }
+    // Todo lo demás queda igual
+    return char;
+  }).join("");
+
+  output.textContent = transformed;
+});
+</script>
+
+</body>
+</html>
